@@ -1,0 +1,17 @@
+== 1. HTTP redirects to HTTPS
+301 -> https://app.example.com/
+== 2. TLS protocol
+* SSL connection using TLSv1.3 / TLS_AES_256_GCM_SHA384 / X25519 / RSASSA-PSS
+== 3. Security headers
+server: nginx
+strict-transport-security: max-age=31536000; includeSubDomains
+x-content-type-options: nosniff
+x-frame-options: SAMEORIGIN
+== 4. Gzip
+content-encoding: gzip
+== 5. Cache headers (/static)
+cache-control: public, max-age=2592000, immutable
+x-cache-status: HIT
+== 6. Rate limit (expect 429s)
+     12 200
+     28 429
